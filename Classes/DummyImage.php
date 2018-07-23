@@ -4,6 +4,7 @@ namespace Wwwision\Neos\DummyImage;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\ResourceManagement\PersistentResource;
 use Neos\Media\Domain\Model\AssetInterface;
+use Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface;
 use Neos\Media\Domain\Model\DimensionsTrait;
 use Neos\Media\Domain\Model\ImageInterface;
 use Neos\Media\Domain\Model\Thumbnail;
@@ -282,7 +283,7 @@ final class DummyImage implements AssetInterface, ImageInterface
 
         $this->source = <<<EOT
             <svg xmlns="http://www.w3.org/2000/svg" width="{$this->width}" height="{$this->height}" font-size="100%">
-                <rect x="{$boxX1}" y="{$boxY1}" width="{$boxWidth}" height="{$boxHeight}" style="fill:{$backgroundColor};stroke:{$strokeColor};stroke-width:1" vector-effect="non-scaling-stroke"/>
+                <rect x="{$boxX1}" y="{$boxY1}" width="{$boxWidth}" height="{$boxHeight}" style="fill:{$backgroundColor};stroke:{$strokeColor};stroke-width:1px" vector-effect="non-scaling-stroke"/>
                 <g stroke-width="1" stroke="{$strokeColor}">
                     <line x1="{$strokeX1}" y1="{$strokeY1}" x2="{$strokeX2}" y2="{$strokeY2}" vector-effect="non-scaling-stroke"/>
                     <line x1="{$strokeX2}" y1="{$strokeY1}" x2="{$strokeX1}" y2="{$strokeY2}" vector-effect="non-scaling-stroke"/>
@@ -308,4 +309,26 @@ EOT;
         return $string;
     }
 
+    /**
+     * @param string $assetSourceIdentifier
+     */
+    public function setAssetSourceIdentifier(string $assetSourceIdentifier): void
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssetSourceIdentifier(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * @return AssetProxyInterface|null
+     */
+    public function getAssetProxy(): ?AssetProxyInterface
+    {
+        return null;
+    }
 }
